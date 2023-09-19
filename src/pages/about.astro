@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro'
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "About me"
 
@@ -18,41 +17,21 @@ const skillColor = "navy"
 const textTransform = "uppercase"
 const fontWeight = "bold"
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textTransform}}>
-      h1 {
-        font-size: 4rem;
-        color: purple;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textTransform)
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <h1>{pageTitle}</h1>
-    <p>Hi, i'm {identity.name} a {identity.title} at {identity.company}</p>
-    <p>My hobbies are:</p>
-    <ul>
-      {hobbies.map(hobby => <li>{hobby}</li>)}
-    </ul>
-    <p>My skills are:</p>
-    <ol>
-      {skills.map(skill => <li class="skill">{skill}</li>)}
-    </ol>
-    <Footer />
-    <script>
-			import "../scripts/menu.js";
-		</script>
-  </body>
-</html>
+<style define:vars={{skillColor, fontWeight, textTransform}}>
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textTransform)
+  }
+</style>
+<BaseLayout pageTitle={pageTitle}>
+  <p>Hi, i'm {identity.name} a {identity.title} at {identity.company}</p>
+  <p>My hobbies are:</p>
+  <ul>
+    {hobbies.map(hobby => <li>{hobby}</li>)}
+  </ul>
+  <p>My skills are:</p>
+  <ol>
+    {skills.map(skill => <li class="skill">{skill}</li>)}
+  </ol>
+</BaseLayout>
