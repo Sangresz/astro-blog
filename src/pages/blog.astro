@@ -1,13 +1,14 @@
 ---
+import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+const allPosts = await Astro.glob('./posts/*.md')
 const pageTitle = "Blog"
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>I'll update this page with some posts that i will make</p>
   <ul>
-    <li><a href="/posts/post1">Post 1</a></li>
-    <li><a href="/posts/post2">Post 2</a></li>
-    <li><a href="/posts/post3">Post 3</a></li>
+    {allPosts.map(post => 
+      <BlogPost url={post.url} title={post.frontmatter.title} />
+    )}
   </ul>
 </BaseLayout>
