@@ -19,9 +19,9 @@ interface Props {
 }
 const { tag } = Astro.params
 const { posts } = Astro.props
-
+const pageTitle = "Tag is "+tag
 ---
-<BaseLayout pageTitle={tag}>
+<BaseLayout pageTitle={pageTitle}>
     <p>Posts tagged with {tag}</p>
     {posts.map(post =>
         <BlogPost url={post.url} title={post.frontmatter.title} />
