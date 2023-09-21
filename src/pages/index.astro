@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.svelte"
 const pageTitle = "Homepage"
 ---
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome blog subtitle</h2>
+  <Greeting client:load greetings={["Hello", "Hi", "Ciao"]} />
 </BaseLayout>

@@ -12,5 +12,6 @@
   "dependencies": {
     "@astrojs/rss": "^3.0.0",
     "astro": "^3.1.1"
+    "svelte": "^4.0.0"
   }
 }
